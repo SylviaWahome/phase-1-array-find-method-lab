@@ -4,17 +4,17 @@
   "description": "A JavaScript lab",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --timeout 5000 -R mocha-multi --reporter-options spec=-,json=.results.json"
+    "test": "mocha --require @babel/register --timeout 5000 -R mocha-multi --reporter-options spec=-,json=.results.json"
   },
   "author": "flatironschool",
   "license": "Included in Repo",
   "devDependencies": {
-    "babel-core": "6.26.3",
-    "babel-preset-env": "1.7.0",
+    "@babel/core": "^7.27.4",
+    "@babel/preset-env": "^7.27.2",
+    "@babel/register": "^7.27.1",
     "chai": "^4.1.2",
-    "jsdom": "9.2.1",
+    "jsdom": "^26.1.0",
     "mocha": "^5.2.0",
-    "mocha-jsdom": "~1.1.0",
     "mocha-multi": "1.0.1"
   },
   "directories": {
@@ -28,5 +28,8 @@
   "bugs": {
     "url": "https://github.com/learn-co-curriculum/phase-1-array-find-method-lab/issues"
   },
-  "homepage": "https://github.com/learn-co-curriculum/phase-1-array-find-method-lab#readme"
+  "homepage": "https://github.com/learn-co-curriculum/phase-1-array-find-method-lab#readme",
+  "dependencies": {
+    "jsdom-global": "^3.0.2"
+  }
 }

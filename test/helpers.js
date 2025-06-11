@@ -1,20 +1,17 @@
-const chai = require('chai')
-global.expect = chai.expect
-const fs = require('fs')
-const jsdom = require('mocha-jsdom')
-const path = require('path')
-const babel = require('babel-core');
+const chai = require('chai');
+global.expect = chai.expect;
 
-const html = fs.readFileSync(path.resolve(__dirname, '..', 'index.html'), 'utf-8')
+const fs = require('fs');
+const path = require('path');
 
-const babelResult = babel.transformFileSync(
-  path.resolve(__dirname, '..', 'index.js'), {
-    presets: ['env']
-  }
-);
+// Automatically transpile code using Babel
+require('@babel/register');
 
-const src = babelResult.code
+// Set up a DOM environment globally
+require('jsdom-global')();
 
-jsdom({
-  html, src
-});
+const html = fs.readFileSync(path.resolve(__dirname, '..', 'index.html'), 'utf-8');
+document.documentElement.innerHTML = html;
+
+// Load and execute the JavaScript file
+require(path.resolve(__dirname, '..', 'index.js'));
